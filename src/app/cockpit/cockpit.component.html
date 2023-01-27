@@ -2,10 +2,13 @@
     <div class="col-xs-12">
       <p>Add new Servers or blueprints!</p>
       <label>Server Name</label>
+
+      <!-- 2-way binding approach-->
       <!--
       <input type="text" class="form-control" [(ngModel)]="newServerName">
       <input type="text" class="form-control" [(ngModel)]="newServerContent">
       -->
+      <!-- local reference approach-->
       <input
         type="text"
         class="form-control" #serverNameInput>

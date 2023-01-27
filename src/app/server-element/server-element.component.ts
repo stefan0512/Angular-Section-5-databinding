@@ -1,26 +1,32 @@
-import { Component, Input, OnInit, ViewEncapsulation, OnChanges, SimpleChanges,
-  AfterContentInit, AfterContentChecked,
-  AfterViewInit, AfterViewChecked,
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+  OnChanges,
+  SimpleChanges,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
   OnDestroy,
   ViewChild,
   ElementRef,
-  ContentChild
+  ContentChild,
+  DoCheck,
 } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.css'],
-  encapsulation: ViewEncapsulation.Emulated // None, ShadowDome
+  encapsulation: ViewEncapsulation.Emulated, // None, ShadowDome
 })
-export class ServerElementComponent implements OnInit {
-
-  @Input('srvElement')  element: {type: string, name: string, content: string}
+export class ServerElementComponent implements OnInit, OnChanges, DoCheck {
+  @Input('srvElement') element: { type: string; name: string; content: string };
   @Input() nameInput: string;
   @ViewChild('heading', { static: true }) header: ElementRef;
   @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef;
-
-
 
   constructor() {
     console.log('constructor called');
@@ -34,7 +40,9 @@ export class ServerElementComponent implements OnInit {
   ngOnInit(): void {
     console.log('# 02 - ngOnInit called');
     console.log('## 02 - header: ' + this.header.nativeElement.textContent);
-    console.log('## 02 - Paragraph: ' + this.paragraph.nativeElement.textContent);
+    console.log(
+      '## 02 - Paragraph: ' + this.paragraph.nativeElement.textContent
+    );
   }
 
   ngDoCheck(): void {
@@ -43,7 +51,9 @@ export class ServerElementComponent implements OnInit {
 
   ngAfterContentInit(): void {
     console.log('# 04 -ngAfterContentInit called');
-    console.log('## 04 - Paragraph: ' + this.paragraph.nativeElement.textContent);
+    console.log(
+      '## 04 - Paragraph: ' + this.paragraph.nativeElement.textContent
+    );
   }
 
   ngAfterContentCheck(): void {
@@ -61,5 +71,4 @@ export class ServerElementComponent implements OnInit {
   ngOnDestroy(): void {
     console.log('# 10 -ngOnDestroy called');
   }
-
 }
