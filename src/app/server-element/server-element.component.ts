@@ -26,7 +26,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck {
   @Input('srvElement') element: { type: string; name: string; content: string };
   @Input() nameInput: string;
   @ViewChild('heading', { static: true }) header: ElementRef;
-  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef;
+  @ContentChild('contentParagraphX', { static: true }) paragraph: ElementRef;
 
   constructor() {
     console.log('constructor called');
